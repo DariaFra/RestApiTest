@@ -2,3 +2,5 @@ apiKey=52e4a5fe4c18441a9624b969b815ce2f
 urlForSearch=https://api.spoonacular.com/recipes/complexSearch
 urlForPost=https://api.spoonacular.com/recipes/cuisine
 urlShoppingList=https://api.spoonacular.com/mealplanner/your-users-name250/shopping-list
+hash=ddc3bf752c0c7dbd3f7394f3790115582f6d5019
+url=http://localhost:8189/market/api/v1/
