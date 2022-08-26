@@ -28,6 +28,7 @@ public class AbstractTest {
     private static String urlForSearch;
     private static String urlForPost;
     private static String urlShoppingList;
+    private static String hash;
     protected static RequestSpecification requestSpecification;
     protected static ResponseSpecification responseSpecification;
     protected static ObjectMapper objectMapper;
@@ -40,13 +41,15 @@ public class AbstractTest {
         RestAssured.config = RestAssuredConfig.config().objectMapperConfig
                 (new ObjectMapperConfig().jackson2ObjectMapperFactory((cls, charset) -> objectMapper));
 
-        configFile = new FileInputStream(lesson3.AbstractTest.class.getResource("../properties").getFile());
+        configFile = new FileInputStream(lesson3.AbstractTest.class.getResource("src/main/resources/properties")
+                .getFile());
         prop.load(configFile);
 
         apiKey = prop.getProperty("apiKey");
         urlForSearch = prop.getProperty("urlForSearch");
         urlForPost = prop.getProperty("urlForPost");
         urlShoppingList = prop.getProperty("urlShoppingList");
+        hash = prop.getProperty("hash");
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
         requestSpecification = new RequestSpecBuilder()
@@ -77,5 +80,8 @@ public class AbstractTest {
 
     public static String getUrlShoppingList() {
         return urlShoppingList;
+    }
+    public static String getHash(){
+        return hash;
     }
 }

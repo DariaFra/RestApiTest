@@ -31,7 +31,7 @@ public class AddToShoppingListTest extends AbstractTest {
     }
 
     @Test
-    void addToShoppingListTest() throws JsonProcessingException {
+    void addToShoppingListTest() {
         AddToShoppingListRequest shoppingRequest2 = AddToShoppingListRequest.builder()
                 .item("baking powder")
                 .aisle("Baking")
@@ -40,7 +40,7 @@ public class AddToShoppingListTest extends AbstractTest {
 
 
         AddToShoppingListResponse idName = given()
-                .queryParam("hash", "ddc3bf752c0c7dbd3f7394f3790115582f6d5019")
+                .queryParam("hash", getHash())
                 .queryParam("apiKey", getApiKey())
                 .body(shoppingRequest2)
                 .when()
@@ -53,14 +53,14 @@ public class AddToShoppingListTest extends AbstractTest {
         assertThat(idName.getName(), containsString("baking powder"));
         given()
                 .queryParam("apiKey", getApiKey())
-                .queryParam("hash", "ddc3bf752c0c7dbd3f7394f3790115582f6d5019")
+                .queryParam("hash", getHash())
                 .when()
                 .get(getUrlShoppingList())
                 .then()
                 .statusCode(200);
 
         given()
-                .queryParam("hash", "ddc3bf752c0c7dbd3f7394f3790115582f6d5019")
+                .queryParam("hash", getHash())
                 .queryParam("apiKey", getApiKey())
                 .delete(getUrlShoppingList() + "/items/" + idName.getId())
                 .then()

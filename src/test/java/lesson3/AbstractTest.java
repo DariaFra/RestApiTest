@@ -19,7 +19,8 @@ public abstract class AbstractTest {
 
     @BeforeAll
     static void initTest() throws IOException {
-        configFile = new FileInputStream(AbstractTest.class.getResource("../properties").getFile());
+        configFile = new FileInputStream(AbstractTest.class.getResource("src/main/resources/properties")
+                .getFile());
         prop.load(configFile);
 
         apiKey = prop.getProperty("apiKey");
